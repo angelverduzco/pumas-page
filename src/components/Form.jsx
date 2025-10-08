@@ -7,10 +7,29 @@ export default function Form() {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [phone, setPhone] = useState("");
+  const [validity, setValidity] = useState({
+    name: false,
+    email: false,
+    phone: true,
+  });
   const { openModal } = useModal();
+
+  const handleValidationChange = (inputName, isValid) => {
+    setValidity((prev) => ({
+      ...prev,
+      [inputName]: isValid,
+    }));
+  };
 
   const handleSubmit = (e) => {
     e.preventDefault();
+
+    const isFormValid = validity.name && validity.email && validity.phone;
+    if (!isFormValid) {
+      openModal("Por favor, corrige los errores en el formulario.");
+      return;
+    }
+
     openModal(
       `¡Gracias por suscribirte, ${name}! Pronto recibirás noticias en ${email}.`,
     );
@@ -63,6 +82,9 @@ export default function Form() {
           type="text"
           onChange={({ target }) => setName(target.value)}
           validationFn={validateName}
+          onValidationChange={(isValid) =>
+            handleValidationChange("name", isValid)
+          }
         />
         <ValidatedInput
           label="Correo electrónico"
@@ -70,6 +92,9 @@ export default function Form() {
           type="email"
           onChange={({ target }) => setEmail(target.value)}
           validationFn={validateEmail}
+          onValidationChange={(isValid) =>
+            handleValidationChange("email", isValid)
+          }
         />
         <ValidatedInput
           label="Teléfono (Opcional)"
@@ -77,6 +102,9 @@ export default function Form() {
           type="cel"
           onChange={({ target }) => setPhone(target.value)}
           validationFn={validatePhone}
+          onValidationChange={(isValid) =>
+            handleValidationChange("phone", isValid)
+          }
         />
         <button type="submit">Suscribirse</button>
       </form>

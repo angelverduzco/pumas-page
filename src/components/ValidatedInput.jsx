@@ -6,20 +6,22 @@ export default function ValidatedInput({
   value,
   onChange,
   validationFn,
+  onValidationChange,
 }) {
   const [error, setError] = useState(null);
   const [isValid, setIsValid] = useState(true);
 
   const handleBlur = (value) => {
     const validationResult = validationFn ? validationFn(value) : null;
-    if (validationResult) {
-      setIsValid(true);
-      setError(validationResult);
-    } else {
-      setIsValid(false);
-      setError(validationResult);
+
+    const newIsValid = validationResult === null;
+
+    setIsValid(newIsValid);
+    setError(validationResult);
+
+    if (onValidationChange) {
+      onValidationChange(newIsValid);
     }
-    console.log("Hi");
   };
 
   return (
