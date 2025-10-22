@@ -5,7 +5,7 @@ export default function Footer() {
     <footer className="footer">
       <div>
         <div>
-          <h3>Pumas UNAM</h3>
+          <h2>Pumas UNAM</h2>
           <p>
             Club Universidad Nacional A.C. <br /> Representando a la UNAM desde
             1954
@@ -13,7 +13,7 @@ export default function Footer() {
         </div>
 
         <div>
-          <h3>Enlaces</h3>
+          <h2>Enlaces</h2>
           <a href="https://pumas.mx/" target="_blank" rel="noreferrer">
             Sitio oficial
           </a>
@@ -26,7 +26,7 @@ export default function Footer() {
         </div>
 
         <div>
-          <h3>Contacto</h3>
+          <h2>Contacto</h2>
           <p>
             Estadio Olímpico Universitario <br /> Ciudad Universitaria, CDMX{" "}
             <br /> México

@@ -33,7 +33,6 @@ export default function ValidatedInput({
           value={value}
           onChange={onChange}
           aria-invalid={!isValid}
-          aria-describedby={`${label}-error`}
           onBlur={() => handleBlur(value)}
         />
       </label>

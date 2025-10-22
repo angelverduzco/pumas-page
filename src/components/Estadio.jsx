@@ -6,7 +6,7 @@ export default function Estadio() {
     <section className="estadio">
       <h2>Estadio Olímpico Universitario</h2>
       <figure>
-        <img src={estadioImg} alt="Estadio Olímpico Universitario" />
+        <img src={estadioImg} alt="" />
         <figcaption>
           Capacidad: 72,000 espectadores | Inaugurado: 1952
         </figcaption>
