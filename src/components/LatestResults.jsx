@@ -29,7 +29,7 @@ const LatestResults = () => {
   ];
 
   return (
-    <section className="latest-results" aria-labelledby="results-title">
+    <section className="latest-results">
       <h2 id="results-title" className="results-title">
         Últimos Resultados
       </h2>
