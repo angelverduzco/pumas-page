@@ -4,6 +4,9 @@ import Footer from "./components/Footer";
 import Modal from "./components/Modal";
 import { useModal } from "./ModalContext";
 import HomePage from "./pages/HomePage";
+import { Routes } from "react-router";
+import { Route } from "react-router";
+import TrophiesPage from "./pages/TrophiesPage";
 
 function App() {
   const { isOpen, message, closeModal } = useModal();
@@ -15,7 +18,10 @@ function App() {
       </Modal>
       <Header />
       <NavBar />
-      <HomePage />
+      <Routes>
+        <Route index path="/" element={<HomePage />} />
+        <Route path="/trofeos" element={<TrophiesPage />} />
+      </Routes>
       <Footer />
     </>
   );
