@@ -1,4 +1,4 @@
-import "../styles/campeonatos.css";
+import "./Campeonatos.css";
 
 export default function Campeonatos() {
   return (

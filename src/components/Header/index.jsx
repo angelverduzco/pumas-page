@@ -1,5 +1,5 @@
-import headerImg from "../assets/puma.webp";
-import "../styles/header.css";
+import headerImg from "../../assets/puma.webp";
+import "./Header.css";
 
 export default function Header() {
   return (

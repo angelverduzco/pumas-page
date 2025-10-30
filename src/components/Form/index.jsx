@@ -1,7 +1,7 @@
 import { useState } from "react";
-import "../styles/formulario.css";
-import { useModal } from "../ModalContext";
-import ValidatedInput from "./ValidatedInput";
+import "./Form.css";
+import { useModal } from "../../ModalContext";
+import ValidatedInput from "../ValidatedInput";
 
 export default function Form() {
   const [name, setName] = useState("");

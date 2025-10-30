@@ -1,5 +1,5 @@
-import estadioImg from "../assets/estadio.webp";
-import "../styles/estadio.css";
+import estadioImg from "../../assets/estadio.webp";
+import "./Estadio.css";
 
 export default function Estadio() {
   return (

@@ -1,4 +1,4 @@
-import "../styles/latestResults.css";
+import "./LatestResults.css";
 
 const LatestResults = () => {
   const results = [

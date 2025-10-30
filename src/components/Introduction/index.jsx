@@ -1,5 +1,5 @@
-import campeonImg from "../assets/campeon.webp";
-import "../styles/introduction.css";
+import campeonImg from "../../assets/campeon.webp";
+import "./Introduction.css";
 
 export default function Introduction() {
   return (
