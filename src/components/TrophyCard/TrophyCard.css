@@ -1,0 +1,29 @@
+.trophy-card {
+  background: white;
+  border-radius: 15px;
+  padding: 1rem;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+  color: black;
+
+  &:hover {
+    transform: scale(1.05);
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
+  }
+}
+
+.trophy-img {
+  max-width: 100px;
+  height: auto;
+  margin-bottom: 10px;
+  aspect-ratio: 9/16;
+}
+
+.trophy-card ul {
+  padding: 0;
+}
+
+.trophy-card li {
+  text-align: center;
+  list-style: none;
+}
