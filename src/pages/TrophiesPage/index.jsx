@@ -1,12 +1,12 @@
 import "./TrophiesPage.css";
-import ligamxTrophy from "../../assets/ligamx.webp";
-import campeonDeCampeonesTrophy from "../../assets/campeon_de_campeones.webp";
-import concacafTrophy from "../../assets/concachampions.webp";
+import ligamxTrophy from "../../assets/trofeos/ligamx.webp";
+import campeonDeCampeonesTrophy from "../../assets/trofeos/campeon_de_campeones.webp";
+import concacafTrophy from "../../assets/trofeos/concachampions.webp";
 import TrophyCard from "../../components/TrophyCard";
-import copaMexicoTrophy from "../../assets/copa_mexico.webp";
-import segundaDivisionTrophy from "../../assets/segunda_division.webp";
-import interamericanaTrophy from "../../assets/copa_interamericana.webp";
-import santiagoBernabeuTrophy from "../../assets/copa_santiago_bernabeu.webp";
+import copaMexicoTrophy from "../../assets/trofeos/copa_mexico.webp";
+import segundaDivisionTrophy from "../../assets/trofeos/segunda_division.webp";
+import interamericanaTrophy from "../../assets/trofeos/copa_interamericana.webp";
+import santiagoBernabeuTrophy from "../../assets/trofeos/copa_santiago_bernabeu.webp";
 
 const trophies = [
   {
@@ -63,7 +63,7 @@ const trophies = [
 
 export default function TrophiesPage() {
   return (
-    <div className="trophies-container">
+    <main className="trophies-container">
       <header className="hero-section">
         <h1>Palmarés de Pumas UNAM</h1>
         <p>Una historia de gloria y pasión universitaria</p>
@@ -74,6 +74,6 @@ export default function TrophiesPage() {
           <TrophyCard trophy={trophy} key={index} />
         ))}
       </div>
-    </div>
+    </main>
   );
 }

@@ -1,0 +1,58 @@
+.players-container {
+  padding: 2rem;
+  background-color: #fafafa;
+  text-align: center;
+}
+
+.players-hero {
+  background-image: url("../../assets/himno-estadio.webp");
+  background-size: cover;
+  background-position: 0 70%;
+  color: white;
+  padding: 4rem 1rem;
+  border-radius: 20px;
+  box-shadow: inset 0 0 200px rgba(20, 20, 20, 0.8);
+}
+
+.filters {
+  margin: 2rem 0;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.filter-btn {
+  padding: 0.5rem 1.2rem;
+  border: none;
+  background-color: #002d72;
+  color: white;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.2s ease, transform 0.2s ease;
+  font-family: Montserrat, sans-serif;
+  font-weight: bold;
+}
+
+.filter-btn:hover {
+  background-color: #0139a6;
+  transform: scale(1.05);
+}
+
+.filter-btn.active {
+  background-color: #fcb316;
+  color: #002d72;
+}
+
+.players-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));
+  gap: 2rem;
+  margin-top: 2rem;
+}
+
+@media (width <= 768px) {
+  .players-grid {
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  }
+}
