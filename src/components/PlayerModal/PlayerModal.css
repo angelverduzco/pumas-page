@@ -60,6 +60,36 @@
   transform: scale(1.2);
 }
 
+@media(width <= 1028px) {
+  .modal-content {
+    flex-direction: column;
+    max-height: 90vh;
+    overflow-y: auto;
+    align-items: center;
+  }
+
+  .modal-photo {
+    width: 100%;
+    max-width: 400px;
+    height: auto;
+    margin-bottom: 1.5rem;
+  }
+}
+
+@media (width <= 768px) {
+  .modal-content {
+    flex-direction: column;
+    max-height: 80vh;
+    overflow-y: auto;
+    margin: 0 1rem;
+  }
+
+  .modal-photo {
+    width: 100%;
+    height: auto;
+  }
+}
+
 /* === Animaciones === */
 @keyframes fadeIn {
   from { opacity: 0; }
