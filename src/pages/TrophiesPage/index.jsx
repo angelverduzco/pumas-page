@@ -65,7 +65,7 @@ export default function TrophiesPage() {
   return (
     <main className="trophies-container">
       <header className="hero-section">
-        <h1>Palmarés de Pumas UNAM</h1>
+        <h2>Palmarés de Pumas UNAM</h2>
         <p>Una historia de gloria y pasión universitaria</p>
       </header>
 

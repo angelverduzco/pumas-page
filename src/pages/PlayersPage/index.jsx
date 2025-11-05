@@ -236,7 +236,7 @@ export default function PlayersPage() {
   return (
     <main className="players-container">
       <section className="players-hero">
-        <h1>Plantilla Pumas UNAM</h1>
+        <h2>Plantilla Pumas UNAM</h2>
         <p>Conoce a los jugadores que defienden nuestros colores</p>
       </section>
 
@@ -245,6 +245,7 @@ export default function PlayersPage() {
           <button
             key={pos}
             className={`filter-btn ${filter === pos ? "active" : ""}`}
+            aria-label={`Filtrar por posición: ${pos}`}
             onClick={() => setFilter(pos)}
           >
             {pos}
