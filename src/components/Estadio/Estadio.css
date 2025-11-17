@@ -3,9 +3,9 @@
   background-color: #f5f5f5;
 }
 
-.estadio h2 {
+.estadio figure h2 {
   margin: 0;
-  margin-bottom: 1rem;
+  margin-top: 1.5rem;
 }
 
 .estadio figure {
