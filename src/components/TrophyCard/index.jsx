@@ -11,11 +11,17 @@ export default function TrophyCard({ trophy }) {
   return (
     <div className="trophy-card">
       <img src={trophy.image} alt={trophy.name} className="trophy-img" />
-      <h2>{trophy.name}</h2>
+      <h2 id={`trophy-name-${trophy.id}`}>{trophy.name}</h2>
       <p>{trophy.count} títulos</p>
 
       <details onToggle={handleToggle}>
-        <summary aria-expanded={isOpen} aria-controls={`years-${trophy.name}`}>
+        <summary
+          tabIndex={0}
+          id={`summary-years-${trophy.id}`}
+          aria-labelledby={`trophy-name-${trophy.id} summary-years-${trophy.id}`}
+          aria-expanded={isOpen}
+          aria-controls={`years-${trophy.name}`}
+        >
           Ver años
         </summary>
         <ul id={`years-${trophy.name}`}>

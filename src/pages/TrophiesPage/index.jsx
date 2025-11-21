@@ -10,6 +10,7 @@ import santiagoBernabeuTrophy from "../../assets/trofeos/copa_santiago_bernabeu.
 
 const trophies = [
   {
+    id: 1,
     name: "Liga MX",
     count: 7,
     years: [
@@ -24,36 +25,42 @@ const trophies = [
     image: ligamxTrophy,
   },
   {
+    id: 2,
     name: "Copa de Campeones de la Concacaf",
     count: 3,
     years: ["1981", "1982", "1989"],
     image: concacafTrophy,
   },
   {
+    id: 3,
     name: "Copa México",
     count: 1,
     years: ["1974-1975"],
     image: copaMexicoTrophy,
   },
   {
+    id: 4,
     name: "Copa Interamericana",
     count: 1,
     years: ["1981"],
     image: interamericanaTrophy,
   },
   {
+    id: 5,
     name: "Campeón de Campeones",
     count: 2,
     years: ["1974-1975", "2003-2004"],
     image: campeonDeCampeonesTrophy,
   },
   {
+    id: 6,
     name: "Trofeo Santiago Bernabéu",
     count: 1,
     years: ["1975"],
     image: santiagoBernabeuTrophy,
   },
   {
+    id: 7,
     name: "Segunda División",
     count: 1,
     years: ["1961-1962"],
@@ -64,10 +71,10 @@ const trophies = [
 export default function TrophiesPage() {
   return (
     <main className="trophies-container">
-      <header className="hero-section">
+      <section className="hero-section">
         <h2>Palmarés de Pumas UNAM</h2>
         <p>Una historia de gloria y pasión universitaria</p>
-      </header>
+      </section>
 
       <div className="trophies-grid">
         {trophies.map((trophy, index) => (
