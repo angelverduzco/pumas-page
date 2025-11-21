@@ -8,6 +8,9 @@ importers:
 
   .:
     dependencies:
+      '@justinribeiro/lite-youtube':
+        specifier: ^1.9.0
+        version: 1.9.0
       react:
         specifier: ^19.1.1
         version: 19.2.0
@@ -293,6 +296,9 @@ packages:
   '@jest/schemas@29.6.3':
     resolution: {integrity: sha512-mo5j5X+jIZmJQveBKeS/clAueipV7KgiX1vMgCxam1RNYiqE1w62n0/tJJnHtjW8ZHcQco5gY85jA3mi0L+nSA==}
     engines: {node: ^14.15.0 || ^16.10.0 || >=18.0.0}
+
+  '@justinribeiro/lite-youtube@1.9.0':
+    resolution: {integrity: sha512-+VZutWCVEpXNGR00ch/8g8snexv5q8zN0NCJWrXdRBYQe0Oel1HKDl9BVEM7FzZbf/IWPGIdWs4WcGMxXITFKA==}
 
   '@nodelib/fs.scandir@2.1.5':
     resolution: {integrity: sha512-vq24Bq3ym5HEQm2NKCr3yXDwjc7vTsEThRDnkp2DK9p1uqLR+DHurm/NOTo0KG7HYHU7eppKZj3MyqYuMBf62g==}
@@ -1880,6 +1886,8 @@ snapshots:
   '@jest/schemas@29.6.3':
     dependencies:
       '@sinclair/typebox': 0.27.8
+
+  '@justinribeiro/lite-youtube@1.9.0': {}
 
   '@nodelib/fs.scandir@2.1.5':
     dependencies:

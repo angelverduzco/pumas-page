@@ -15,9 +15,6 @@ export default function NavBar() {
           <NavLink to={"/plantilla"}>Plantilla</NavLink>
         </li>
         <li>
-          <NavLink to={"/calendario"}>Calendario</NavLink>
-        </li>
-        <li>
           <NavLink to={"/noticias"}>Noticias</NavLink>
         </li>
       </ul>
