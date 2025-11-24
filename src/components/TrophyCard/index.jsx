@@ -10,7 +10,7 @@ export default function TrophyCard({ trophy }) {
 
   return (
     <div className="trophy-card">
-      <img src={trophy.image} alt={trophy.name} className="trophy-img" />
+      <img src={trophy.image} alt="" className="trophy-img" />
       <h2 id={`trophy-name-${trophy.id}`}>{trophy.name}</h2>
       <p>{trophy.count} títulos</p>
 
