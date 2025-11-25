@@ -22,7 +22,7 @@ export default function NewsCard({ news }) {
           />
         </>
       ) : (
-        <img src={news.image} alt={news.title} className="news-img" />
+        <img src={news.image} alt="" className="news-img" />
       )}
 
       <div className="news-body">
