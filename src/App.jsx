@@ -9,6 +9,7 @@ import { Route } from "react-router";
 import TrophiesPage from "./pages/TrophiesPage";
 import PlayersPage from "./pages/PlayersPage";
 import NewsPage from "./pages/NewsPage";
+import StandingsPage from "./pages/StandingsPage";
 
 function App() {
   const { isOpen, message, closeModal } = useModal();
@@ -24,6 +25,7 @@ function App() {
         <Route index path="/" element={<HomePage />} />
         <Route path="/trofeos" element={<TrophiesPage />} />
         <Route path="/plantilla" element={<PlayersPage />} />
+        <Route path="/posiciones" element={<StandingsPage />} />
         <Route path="/noticias" element={<NewsPage />} />
       </Routes>
       <Footer />

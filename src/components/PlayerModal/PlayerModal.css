@@ -2,93 +2,127 @@
 .modal-player-overlay {
   position: fixed;
   inset: 0;
-  background-color: rgba(0, 0, 0, 0.6);
+  background-color: rgba(0, 0, 0, 0.7);
   display: flex;
   justify-content: center;
   align-items: center;
   animation: fadeIn 0.3s ease;
   z-index: 1000;
+  padding: 1rem;
 }
 
 .modal-player-content {
   background: #041e42;
+  background: linear-gradient(135deg, #041e42 0%, #00112b 100%);
   border-radius: 20px;
-  padding: 2rem;
-  width: 90%;
-  max-width: 800px;
-  max-height: 800px;
+  width: 100%;
+  max-width: 500px;
   position: relative;
   text-align: center;
   animation: slideUp 0.4s ease;
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.5);
   display: flex;
-  color: #fff
+  flex-direction: column;
+  align-items: center;
+  color: #fff;
+  border: 2px solid #bba45a;
+  overflow: hidden;
+}
+
+.modal-header-background {
+  width: 100%;
+  height: 120px;
+  background: #122245;
+  background: linear-gradient(120deg,rgba(18, 34, 69, 1) 20%, rgba(187, 164, 90, 1) 100%);
+  position: relative;
+  display: flex;
+  justify-content: center;
 }
 
 .modal-player-photo {
-  aspect-ratio: 1/1;
-  width: 500px;
+  width: 150px;
+  height: 150px;
   object-fit: cover;
-  border-radius: 15px;
-  margin-bottom: 1rem;
+  border-radius: 50%;
+  border: 4px solid #bba45a;
+  background-color: #fff;
+  position: absolute;
+  bottom: -75px; /* Half of height to stick out */
+  box-shadow: 0 5px 15px rgba(0,0,0,0.5);
+}
+
+.modal-player-details {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  width: 100%;
+  align-items: center;
+  padding: 5rem 2rem 3rem 2rem; /* Give space for photo */
 }
 
 .name {
-  font-size: 2.5rem;
+  font-size: 2rem;
   font-weight: bold;
   color: #fff;
+  margin: 0;
 }
 
-.bio {
-  margin-top: 1rem;
-  font-size: 1rem;
-  color: #fff;
-  line-height: 1.5;
+.stats-box {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 2rem;
+  background: rgba(255, 255, 255, 0.05);
+  padding: 1.5rem;
+  border-radius: 15px;
+  width: 100%;
+  border: 1px solid rgba(255,255,255,0.1);
+}
+
+.stats-box p {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  margin: 0;
+  font-size: 1.2rem;
+}
+
+.stats-box strong {
+  color: #bba45a;
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
 }
 
 .close-btn {
   position: absolute;
   top: 10px;
   right: 15px;
-  background: none;
+  background: rgba(0, 0, 0, 0.5);
   border: none;
   font-size: 1.5rem;
   color: #fff;
   cursor: pointer;
-  transition: transform 0.2s ease;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  transition: transform 0.2s ease, background 0.2s ease;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .close-btn:hover {
-  transform: scale(1.2);
+  transform: scale(1.1);
+  background: rgba(0, 0, 0, 0.8);
 }
 
-@media(width <= 1028px) {
-  .modal-player-content {
+@media (width <= 500px) {
+  .stats-box {
+    gap: 1rem;
     flex-direction: column;
-    max-height: 90vh;
-    overflow-y: auto;
-    align-items: center;
-  }
-
-  .modal-player-photo {
-    width: 100%;
-    max-width: 400px;
-    height: auto;
-    margin-bottom: 1.5rem;
-  }
-}
-
-@media (width <= 768px) {
-  .modal-player-content {
-    flex-direction: column;
-    max-height: 80vh;
-    overflow-y: auto;
-    margin: 0 1rem;
-  }
-
-  .modal-player-photo {
-    width: 100%;
-    height: auto;
   }
 }
 

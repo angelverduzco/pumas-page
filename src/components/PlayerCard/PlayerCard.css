@@ -2,79 +2,77 @@
   background: #122245;
   background: linear-gradient(120deg,rgba(18, 34, 69, 1) 20%, rgba(187, 164, 90, 1) 100%);
   border-radius: 15px;
-  transition: transform 0.3s ease;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
   position: relative;
   width: 100%;
-  max-width: 500px;
+  max-width: 300px;
   justify-self: center;
-}
-
-.player-card::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: linear-gradient(
-    to bottom,
-    transparent 10%,
-    rgba(0, 0, 0, 0.8)
-  );
-  border-radius: 15px;
-  z-index: 1;
-  pointer-events: none;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 2rem 1rem;
+  overflow: hidden;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.2);
 }
 
 .player-card:hover {
-  transform: scale(1.05);
+  transform: scale(1.05) translateY(-5px);
   cursor: pointer;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.4);
+}
+
+.player-photo-wrapper {
+  background: #fff;
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  border: 4px solid #bba45a;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+  overflow: hidden;
+  margin-bottom: 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .player-photo {
-  aspect-ratio: 1/1;
-  height: 450px;
-  border-radius: 12px;
-  z-index: -1;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
 .player-info {
-  position: absolute;
-  color: #fff;
-  top: 80%;
-  left: 50%;
-  transform: translate(-50%, -50%);
   display: flex;
-  justify-content: center;
+  flex-direction: column;
   align-items: center;
-  padding: 1rem 0.5rem;
-  width: 80%;
-  gap: 1px;
-  z-index: 2;
-}
-
-.player-name {
-  color: #fff;
-  font-size: 2rem;
-  font-weight: bold;
+  gap: 0.5rem;
 }
 
 .player-number {
-  margin: 0 1rem 0 0;
   color: #bba45a;
-  font-size: 3rem;
+  font-size: 2rem;
+  font-weight: 800;
+  margin: 0;
+}
+
+.player-name {
+  color: #ffffff;
+  font-size: 1.2rem;
+  font-weight: bold;
+  text-align: center;
 }
 
 @media (width <= 768px) {
-  .player-photo {
-    height: 200px;
+  .player-photo-wrapper {
+    width: 100px;
+    height: 100px;
   }
 
   .player-name {
-    font-size: 1.2rem;
+    font-size: 1.1rem;
   }
 
   .player-number {
-    font-size: 1.6rem;
+    font-size: 1.5rem;
   }
 }

@@ -1,4 +1,4 @@
-.players-container {
+.standings-container {
   background-color: #fafafa;
   text-align: center;
   min-height: calc(100vh - 150px);
@@ -17,22 +17,22 @@
 
 .loading-state h2 {
   font-size: 2rem;
-  animation: pulse 1.5s infinite ease-in-out;
+  animation: pulse-load 1.5s infinite ease-in-out;
 }
 
 .error-state {
   color: #d9534f;
 }
 
-@keyframes pulse {
+@keyframes pulse-load {
   0% { opacity: 0.5; transform: scale(0.98); }
   50% { opacity: 1; transform: scale(1.02); }
   100% { opacity: 0.5; transform: scale(0.98); }
 }
 
-.players-hero {
+.standings-hero {
   position: relative;
-  background-image: url("../../assets/himno-estadio.webp");
+  background-image: url("../../assets/estadio.webp");
   background-size: cover;
   background-position: center;
   background-attachment: fixed;
@@ -42,9 +42,10 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  margin-bottom: 3rem;
 }
 
-.players-hero::before {
+.standings-hero::before {
   content: '';
   position: absolute;
   inset: 0;
@@ -52,12 +53,12 @@
   z-index: 1;
 }
 
-.players-hero h2, .players-hero p {
+.standings-hero h2, .standings-hero p, .league-logo {
   position: relative;
   z-index: 2;
 }
 
-.players-hero h2 {
+.standings-hero h2 {
   font-size: 3.5rem;
   font-weight: 900;
   text-transform: uppercase;
@@ -67,53 +68,35 @@
   letter-spacing: 2px;
 }
 
-.players-hero p {
+.standings-hero p {
   font-size: 1.3rem;
   font-weight: 300;
   color: #f0f0f0;
 }
 
-.filters {
-  margin: 2rem 0;
-  display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
-  gap: 1rem;
+.league-logo {
+  height: 80px;
+  object-fit: contain;
+  margin-bottom: 1.5rem;
+  filter: drop-shadow(0 4px 6px rgba(0,0,0,0.5));
 }
 
-.filter-btn {
-  padding: 0.5rem 1.2rem;
-  border: none;
-  background-color: #002d72;
-  color: white;
-  border-radius: 8px;
-  cursor: pointer;
-  transition: background 0.2s ease, transform 0.2s ease;
-  font-family: Montserrat, sans-serif;
-  font-weight: bold;
-}
-
-.filter-btn:hover {
-  background-color: #0139a6;
-  transform: scale(1.05);
-}
-
-.filter-btn.active {
-  background-color: #fcb316;
-  color: #002d72;
-}
-
-.players-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-  gap: 4rem;
-  margin-top: 3rem;
-  justify-content: center;
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  border: 0;
 }
 
 @media (width <= 768px) {
-  .players-grid {
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: 2rem;
+  .standings-container {
+    padding: 1rem;
+  }
+  .standings-hero h2 {
+    font-size: 1.8rem;
   }
 }

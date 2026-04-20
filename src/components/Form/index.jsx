@@ -72,42 +72,44 @@ export default function Form() {
   };
 
   return (
-    <section className="formulario">
-      <h2>Únete a la comunidad Puma</h2>
-      <p>Recibe noticias, promociones y actualizaciones del equipo</p>
-      <form onSubmit={handleSubmit}>
-        <ValidatedInput
-          label="Nombre"
-          value={name}
-          type="text"
-          onChange={({ target }) => setName(target.value)}
-          validationFn={validateName}
-          onValidationChange={(isValid) =>
-            handleValidationChange("name", isValid)
-          }
-        />
-        <ValidatedInput
-          label="Correo electrónico"
-          value={email}
-          type="email"
-          onChange={({ target }) => setEmail(target.value)}
-          validationFn={validateEmail}
-          onValidationChange={(isValid) =>
-            handleValidationChange("email", isValid)
-          }
-        />
-        <ValidatedInput
-          label="Teléfono (Opcional)"
-          value={phone}
-          type="cel"
-          onChange={({ target }) => setPhone(target.value)}
-          validationFn={validatePhone}
-          onValidationChange={(isValid) =>
-            handleValidationChange("phone", isValid)
-          }
-        />
-        <button type="submit">Suscribirse</button>
-      </form>
+    <section className="formulario-section">
+      <div className="formulario">
+        <h2>Únete a la comunidad Puma</h2>
+        <p>Recibe noticias, promociones y actualizaciones del equipo</p>
+        <form onSubmit={handleSubmit}>
+          <ValidatedInput
+            label="Nombre completo"
+            value={name}
+            type="text"
+            onChange={({ target }) => setName(target.value)}
+            validationFn={validateName}
+            onValidationChange={(isValid) =>
+              handleValidationChange("name", isValid)
+            }
+          />
+          <ValidatedInput
+            label="Correo electrónico"
+            value={email}
+            type="email"
+            onChange={({ target }) => setEmail(target.value)}
+            validationFn={validateEmail}
+            onValidationChange={(isValid) =>
+              handleValidationChange("email", isValid)
+            }
+          />
+          <ValidatedInput
+            label="Teléfono Móvil (Opcional)"
+            value={phone}
+            type="cel"
+            onChange={({ target }) => setPhone(target.value)}
+            validationFn={validatePhone}
+            onValidationChange={(isValid) =>
+              handleValidationChange("phone", isValid)
+            }
+          />
+          <button type="submit">Suscribirse</button>
+        </form>
+      </div>
     </section>
   );
 }

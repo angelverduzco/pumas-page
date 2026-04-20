@@ -1,6 +1,5 @@
 import { useEffect, useRef } from "react";
 import "./PlayerModal.css";
-import { calculateAge } from "../../utils/dates";
 
 export default function PlayerModal({ player, onClose }) {
   const modalRef = useRef(null);
@@ -22,9 +21,12 @@ export default function PlayerModal({ player, onClose }) {
 
   // Evita que el foco salga del modal (focus trap básico)
   useEffect(() => {
-    const focusableElements = modalRef.current?.querySelectorAll(
+    if (!modalRef.current) return;
+    const focusableElements = modalRef.current.querySelectorAll(
       'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])',
     );
+    if (!focusableElements.length) return;
+
     const first = focusableElements[0];
     const last = focusableElements[focusableElements.length - 1];
 
@@ -57,33 +59,37 @@ export default function PlayerModal({ player, onClose }) {
           ref={closeBtnRef}
           className="close-btn"
           onClick={onClose}
-          aria-label="Cerrar tarjeta del jugador"
+          aria-label={`Cerrar detalles de ${player.name}`}
         >
           ✕
         </button>
 
-        <img
-          src={player.image}
-          role="presentation"
-          className="modal-player-photo"
-        />
+        <div className="modal-header-background">
+          <img
+            src={player.photo}
+            alt={`Foto de ${player.name}`}
+            className="modal-player-photo"
+          />
+        </div>
 
-        <div>
-          <span id="player-modal-title" className="name">
+        <div className="modal-player-details">
+          <h3 id="player-modal-title" className="name">
             {player.name}
-          </span>
-          <p>
-            <strong>#{player.number}</strong> — {player.position}
-          </p>
-          <p>
-            <strong>Nacionalidad:</strong> {player.nationality}
-          </p>
-          <p>
-            <strong>Edad:</strong> {calculateAge(player.birthDate)} años
-          </p>
-          <p id="player-modal-desc" className="bio">
-            {player.bio}
-          </p>
+          </h3>
+          <div className="stats-box">
+            <p>
+              <strong>Dorsal</strong>
+              {player.number !== null ? `#${player.number}` : "N/A"}
+            </p>
+            <p>
+              <strong>Edad</strong>
+              {player.age ? `${player.age} años` : "N/A"}
+            </p>
+            <p>
+              <strong>Posición</strong>
+              {player.categoria || player.position}
+            </p>
+          </div>
         </div>
       </div>
     </div>

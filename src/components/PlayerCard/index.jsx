@@ -16,11 +16,20 @@ export default function PlayerCard({ player, onClick }) {
       tabIndex={0}
       onClick={onClick}
       onKeyDown={handleKeyDown}
-      aria-label={`Ver detalles de ${player.name}, número ${player.number}`}
+      aria-label={`Ver información de ${player.name}, número ${player.number || "desconocido"}`}
     >
-      <img src={player.image} alt="" className="player-photo" />
+      <div className="player-photo-wrapper">
+        <img
+          src={player.photo}
+          alt={`Foto de perfil de ${player.name}`}
+          className="player-photo"
+          loading="lazy"
+        />
+      </div>
       <figcaption className="player-info">
-        <p className="player-number">#{player.number}</p>
+        <p className="player-number">
+          {player.number !== null ? `#${player.number}` : "-"}
+        </p>
         <span className="player-name">{player.name.toUpperCase()}</span>
       </figcaption>
     </figure>

@@ -12,6 +12,9 @@ export default function NavBar() {
           <NavLink to={"/trofeos"}>Trofeos</NavLink>
         </li>
         <li>
+          <NavLink to={"/posiciones"}>Posiciones</NavLink>
+        </li>
+        <li>
           <NavLink to={"/plantilla"}>Plantilla</NavLink>
         </li>
         <li>

@@ -1,40 +1,79 @@
 .campeonatos {
-  padding: 1rem;
+  padding: 4rem 1rem;
+  background-color: #fafafa;
+  text-align: center;
 }
 
 .campeonatos h2 {
-  margin: 0;
-  margin-bottom: 1rem;
+  font-size: 2.5rem;
+  color: #041e42;
+  margin-bottom: 3rem;
+  text-transform: uppercase;
+  font-weight: 800;
 }
 
-.campeonatos table, th, td {
-  border-collapse: collapse;
-  border: 1px solid #000;
-  color: #000;
-  text-align: center;
-  padding: 0.2rem;
+.campeonatos h2::after {
+  content: '';
+  display: block;
+  width: 60px;
+  height: 4px;
+  background-color: #bba45a;
+  margin: 1rem auto 0;
+  border-radius: 2px;
 }
 
-th[scope="row"] {
-  font-weight: 400;
+.campeonatos-table-wrapper {
+  max-width: 1000px;
+  margin: 0 auto;
+  overflow-x: auto;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+  border-radius: 12px;
 }
 
 .campeonatos table {
   width: 100%;
+  border-collapse: collapse;
+  background: #fff;
+  text-align: left;
+}
+
+.campeonatos thead {
+  background-color: #041e42;
+  color: #bba45a;
+}
+
+.campeonatos th {
+  padding: 1.2rem;
+  text-transform: uppercase;
+  font-weight: bold;
+  letter-spacing: 1px;
+}
+
+.campeonatos td {
+  padding: 1.2rem;
+  color: #444;
+  border-bottom: 1px solid #eee;
+}
+
+.campeonatos tbody tr {
+  transition: background 0.2s;
+}
+
+.campeonatos tbody tr:hover {
+  background: #f8f9fa;
+}
+
+.campeonatos th[scope="row"] {
+  font-weight: bold;
+  color: #041e42;
+  background-color: transparent;
 }
 
 @media (min-width: 768px) {
   .campeonatos {
-    padding: 3rem 10rem;
+    padding: 5rem 2rem;
   }
-
   .campeonatos h2 {
-    font-size: 2.8rem;
-    margin-bottom: 2rem;
-  }
-
-  .campeonatos table, th, td {
-    padding: 0.5rem;
-    font-size: 1.1rem;
+    font-size: 3rem;
   }
 }

@@ -39,19 +39,25 @@ const LatestResults = () => {
             key={index}
             className="match-card"
             aria-label={`Resultado: ${match.home} ${match.homeScore} - ${match.awayScore} ${match.away}`}
+            tabIndex="0"
           >
             <div className="match-date">
               <time dateTime={match.date}>
-                {new Date(match.date).toLocaleDateString("es-MX")}
+                {new Date(match.date).toLocaleDateString("es-MX", {
+                  weekday: "long",
+                  year: "numeric",
+                  month: "long",
+                  day: "numeric",
+                })}
               </time>
             </div>
             <div className="match-details">
-              <div className="team home">
+              <div className="team">
                 <span className="team-name">{match.home}</span>
                 <span className="score">{match.homeScore}</span>
               </div>
               <div className="versus">vs</div>
-              <div className="team away">
+              <div className="team">
                 <span className="score">{match.awayScore}</span>
                 <span className="team-name">{match.away}</span>
               </div>

@@ -1,0 +1,130 @@
+.table-responsive-wrapper {
+  width: 100%;
+  overflow-x: auto; /* Allow scrolling on thin screens */
+  border-radius: 12px;
+  box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+  background: #fff;
+  border: 1px solid #eaeaea;
+}
+
+/* Ensure focus outline is visible for accessibility */
+.table-responsive-wrapper:focus-visible {
+  outline: 3px solid #041e42;
+}
+
+.standings-table {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: center;
+  font-family: 'Montserrat', sans-serif;
+  color: #333;
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  border: 0;
+}
+
+.standings-table thead {
+  background-color: #041e42;
+  color: #bba45a;
+  border-bottom: 2px solid #bba45a;
+}
+
+.standings-table th {
+  padding: 1.2rem 0.5rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  font-size: 0.95rem;
+  letter-spacing: 0.5px;
+  color: #fff;
+}
+
+.standings-table td {
+  padding: 1rem 0.5rem;
+  border-bottom: 1px solid #eaeaea;
+  vertical-align: middle;
+  font-size: 1rem;
+}
+
+.standings-table tbody tr {
+  transition: background 0.2s ease;
+}
+
+.standings-table tbody tr:hover {
+  background-color: #f0f4f8;
+}
+
+/* Highlight for Pumas UNAM */
+.standings-table tbody .highlight-team {
+  background-color: rgba(187, 164, 90, 0.15);
+  border-left: 5px solid #041e42;
+  border-right: 5px solid #041e42;
+}
+.standings-table tbody .highlight-team:hover {
+  background-color: rgba(187, 164, 90, 0.25);
+}
+
+.col-rank {
+  color: #041e42;
+  width: 60px;
+}
+
+.col-team {
+  text-align: left;
+  min-width: 200px;
+  width: auto;
+}
+
+.team-info {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  font-weight: 600;
+  color: #111;
+}
+
+.team-info img {
+  border-radius: 50%;
+  object-fit: contain;
+}
+
+.col-points {
+  color: #041e42;
+  font-size: 1.15rem;
+}
+
+.col-diff {
+  color: #555;
+  font-weight: 600;
+}
+
+@media (width <= 768px) {
+  .hide-mobile {
+    display: none;
+  }
+  
+  .standings-table th, .standings-table td {
+    padding: 0.8rem 0.5rem;
+  }
+  
+  .team-info {
+    gap: 0.5rem;
+    font-size: 0.9rem;
+  }
+  
+  .team-info img {
+    width: 26px;
+    height: 26px;
+  }
+  
+  .col-team {
+    min-width: 150px;
+  }
+}
