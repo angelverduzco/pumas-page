@@ -1,5 +1,4 @@
 import { useState, useEffect } from "react";
-import staticMatches from "../data/pumas_matches.json";
 
 export function useCalendario() {
   const [matches, setMatches] = useState([]);
@@ -10,7 +9,7 @@ export function useCalendario() {
     const fetchMatches = async () => {
       try {
         setLoading(true);
-        // Intentar obtener los datos del web scraper
+        setError(null);
         const response = await fetch("/api/ligamx");
 
         if (!response.ok) {
@@ -25,12 +24,8 @@ export function useCalendario() {
           throw new Error("Datos vacíos del API");
         }
       } catch (err) {
-        console.warn(
-          "Fallo el web scraper, usando datos estáticos (fallback):",
-          err.message,
-        );
-        // Fallback a los datos estáticos extraídos previamente
-        setMatches(staticMatches);
+        console.error("Error al cargar el calendario:", err.message);
+        setError("No se encontraron los datos");
       } finally {
         setLoading(false);
       }

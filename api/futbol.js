@@ -1,17 +1,4 @@
 /**
- * Serverless handler – consolida datos de DOS APIs externas:
- *
- *  1. football.api-sports.io  → plantilla de jugadores
- *  2. thesportsdb.com         → tabla de posiciones + últimos partidos
- *
- * Cada API tiene sus propias credenciales y IDs (ver .env).
- */
-
-/* ────────────────────────────────────────────────────────────
-   Helpers para cada API
-   ──────────────────────────────────────────────────────────── */
-
-/**
  * Obtiene la plantilla de jugadores desde API-Football.
  * Requiere header `x-apisports-key`.
  */

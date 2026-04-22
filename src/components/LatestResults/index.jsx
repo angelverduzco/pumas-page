@@ -33,8 +33,24 @@ const LatestResults = () => {
         <h2 id="results-title" className="results-title">
           Últimos Resultados
         </h2>
-        <div className="results-container error">
-          No se pudieron cargar los resultados en este momento.
+        <div className="results-container" style={{ display: "block" }}>
+          <article
+            className="match-card"
+            style={{ textAlign: "center", padding: "4rem 2rem" }}
+          >
+            <h3
+              style={{
+                color: "#bba45a",
+                fontSize: "2rem",
+                marginBottom: "1rem",
+              }}
+            >
+              ¡Aviso!
+            </h3>
+            <p style={{ color: "#e0e0e0", fontSize: "1.2rem", margin: 0 }}>
+              No se encontraron los datos.
+            </p>
+          </article>
         </div>
       </section>
     );

@@ -16,8 +16,13 @@ export default function CalendarioPage() {
   if (error || !matches || matches.length === 0) {
     return (
       <main className="calendario-page">
-        <h1>Calendario</h1>
-        <div className="status-message error">No se pudo cargar el calendario.</div>
+        <h1>Calendario Clausura 2026</h1>
+        <div className="calendario-grid" style={{ display: "block" }}>
+          <article className="match-card" style={{ textAlign: "center", padding: "4rem 2rem" }}>
+            <h3 style={{ color: "#bba45a", fontSize: "2rem", marginBottom: "1rem" }}>¡Aviso!</h3>
+            <p style={{ color: "#e0e0e0", fontSize: "1.2rem", margin: 0 }}>No se encontraron los datos.</p>
+          </article>
+        </div>
       </main>
     );
   }
