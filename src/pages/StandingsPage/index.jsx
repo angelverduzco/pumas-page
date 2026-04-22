@@ -1,9 +1,9 @@
 import "./StandingsPage.css";
-import { useFutbolData } from "../../hooks/useFutbol";
+import { usePosiciones } from "../../hooks/usePosiciones";
 import StandingsTable from "../../components/StandingsTable";
 
 export default function StandingsPage() {
-  const { data, loading, error } = useFutbolData();
+  const { data, loading, error } = usePosiciones();
 
   if (loading) {
     return (
@@ -26,22 +26,18 @@ export default function StandingsPage() {
     );
   }
 
-  const leagueData = data?.posiciones?.[0]?.league;
-  const tableData = leagueData?.standings?.[0] || [];
+  // El nuevo hook devuelve el arreglo de posiciones directamente en data
+  const tableData = data || [];
+  const leagueName = tableData[0]?.strLeague || "Liga MX";
+  const season = tableData[0]?.strSeason || "Clausura 2026";
 
   return (
     <main className="standings-container">
       <section className="standings-hero">
-        {leagueData?.logo && (
-          <img
-            src={leagueData.logo}
-            alt={`Logo oficial de la competencia ${leagueData.name}`}
-            className="league-logo"
-            loading="lazy"
-          />
-        )}
         <h2>Tabla de Posiciones</h2>
-        <p>Acompaña el recorrido del Equipo en la liga</p>
+        <p>
+          {leagueName} {season && `— Temporada ${season}`}
+        </p>
       </section>
 
       <section aria-labelledby="standings-heading">

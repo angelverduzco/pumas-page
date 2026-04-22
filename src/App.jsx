@@ -10,6 +10,7 @@ import TrophiesPage from "./pages/TrophiesPage";
 import PlayersPage from "./pages/PlayersPage";
 import NewsPage from "./pages/NewsPage";
 import StandingsPage from "./pages/StandingsPage";
+import CalendarioPage from "./pages/CalendarioPage";
 
 function App() {
   const { isOpen, message, closeModal } = useModal();
@@ -26,6 +27,7 @@ function App() {
         <Route path="/trofeos" element={<TrophiesPage />} />
         <Route path="/plantilla" element={<PlayersPage />} />
         <Route path="/posiciones" element={<StandingsPage />} />
+        <Route path="/calendario" element={<CalendarioPage />} />
         <Route path="/noticias" element={<NewsPage />} />
       </Routes>
       <Footer />

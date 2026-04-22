@@ -66,37 +66,38 @@ export default function StandingsTable({ standings }) {
         </thead>
         <tbody>
           {standings.map((row) => {
-            const isPumas = row.team.id === 2286;
+            const isPumas = row.idTeam === "134201";
+            const goalDiff = parseInt(row.intGoalDifference, 10);
             return (
               <tr
-                key={row.team.id}
+                key={row.idTeam}
                 className={isPumas ? "highlight-team" : ""}
                 aria-label={isPumas ? "Pumas UNAM, tu equipo" : null}
               >
                 <td className="col-rank">
-                  <strong>{row.rank}</strong>
+                  <strong>{row.intRank}</strong>
                 </td>
                 <td className="col-team">
                   <div className="team-info">
                     <img
-                      src={row.team.logo}
-                      alt={`Escudo Oficial del equipo ${row.team.name}`}
+                      src={row.strBadge}
+                      alt={`Escudo Oficial del equipo ${row.strTeam}`}
                       loading="lazy"
                       width="35"
                       height="35"
                     />
-                    <span>{row.team.name}</span>
+                    <span>{row.strTeam}</span>
                   </div>
                 </td>
                 <td className="col-points">
-                  <strong>{row.points}</strong>
+                  <strong>{row.intPoints}</strong>
                 </td>
-                <td className="hide-mobile">{row.all.played}</td>
-                <td className="hide-mobile">{row.all.win}</td>
-                <td className="hide-mobile">{row.all.draw}</td>
-                <td className="hide-mobile">{row.all.lose}</td>
+                <td className="hide-mobile">{row.intPlayed}</td>
+                <td className="hide-mobile">{row.intWin}</td>
+                <td className="hide-mobile">{row.intDraw}</td>
+                <td className="hide-mobile">{row.intLoss}</td>
                 <td className="col-diff">
-                  {row.goalsDiff > 0 ? `+${row.goalsDiff}` : row.goalsDiff}
+                  {goalDiff > 0 ? `+${goalDiff}` : goalDiff}
                 </td>
               </tr>
             );

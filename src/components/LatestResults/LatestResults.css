@@ -30,31 +30,27 @@
 }
 
 .match-card {
-  background: #fff;
-  border-radius: 12px;
+  background: #122245;
+  background: linear-gradient(120deg, rgba(18, 34, 69, 1) 20%, rgba(187, 164, 90, 1) 100%);
+  border-radius: 15px;
   padding: 2rem;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+  box-shadow: 0 5px 15px rgba(0,0,0,0.2);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
   position: relative;
   overflow: hidden;
-  border-top: 5px solid #041e42;
-}
-
-.match-card::before {
-  content: '';
-  position: absolute;
-  top: 0; right: 0; bottom: 0; left: 0;
-  background: linear-gradient(135deg, rgba(187, 164, 90, 0.05) 0%, transparent 100%);
-  pointer-events: none;
+  color: #ffffff;
+  display: flex;
+  flex-direction: column;
 }
 
 .match-card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.12);
+  transform: scale(1.05) translateY(-5px);
+  cursor: pointer;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.4);
 }
 
 .match-date {
-  color: #888;
+  color: #e0e0e0;
   font-size: 0.9rem;
   text-align: center;
   margin-bottom: 1.5rem;
@@ -67,6 +63,9 @@
   justify-content: space-between;
   align-items: center;
   margin: 1rem 0 1.5rem;
+  background-color: rgba(0, 0, 0, 0.2);
+  padding: 1rem;
+  border-radius: 8px;
 }
 
 .team {
@@ -79,7 +78,7 @@
 
 .team-name {
   font-weight: 700;
-  color: #041e42;
+  color: #ffffff;
   text-align: center;
   font-size: 1.1rem;
 }
@@ -87,7 +86,7 @@
 .score {
   font-size: 2.5rem;
   font-weight: 900;
-  color: #041e42;
+  color: #bba45a;
   line-height: 1;
 }
 
@@ -101,11 +100,11 @@
 .competition {
   text-align: center;
   font-size: 0.85rem;
-  color: #041e42;
+  color: #e0e0e0;
   font-weight: bold;
-  background: #f0f4f8;
-  padding: 0.5rem;
-  border-radius: 4px;
+  margin-top: auto;
+  border-top: 1px dashed rgba(255, 255, 255, 0.2);
+  padding-top: 1rem;
   text-transform: uppercase;
   letter-spacing: 1px;
 }
