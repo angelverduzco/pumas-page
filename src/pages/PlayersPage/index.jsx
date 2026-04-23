@@ -3,6 +3,7 @@ import { useState, useMemo } from "react";
 import PlayerCard from "../../components/PlayerCard";
 import PlayerModal from "../../components/PlayerModal";
 import { useFutbolData } from "../../hooks/useFutbol";
+import LoadingState from "../../components/LoadingState";
 
 // Mapeo de posiciones de API-Sports a español
 const positionMap = {
@@ -46,9 +47,7 @@ export default function PlayersPage() {
   if (loading) {
     return (
       <main className="players-container">
-        <div className="loading-state">
-          <h2>Cargando plantilla oficial...</h2>
-        </div>
+        <LoadingState message="Cargando plantilla oficial..." />
       </main>
     );
   }

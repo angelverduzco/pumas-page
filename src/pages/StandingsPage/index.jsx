@@ -1,6 +1,7 @@
 import "./StandingsPage.css";
 import { usePosiciones } from "../../hooks/usePosiciones";
 import StandingsTable from "../../components/StandingsTable";
+import LoadingState from "../../components/LoadingState";
 
 export default function StandingsPage() {
   const { data, loading, error } = usePosiciones();
@@ -8,9 +9,7 @@ export default function StandingsPage() {
   if (loading) {
     return (
       <main className="standings-container">
-        <div className="loading-state">
-          <h2>Cargando tabla de posiciones...</h2>
-        </div>
+        <LoadingState message="Cargando tabla de posiciones..." />
       </main>
     );
   }
@@ -75,11 +74,25 @@ export default function StandingsPage() {
         </p>
       </section>
 
-      <section aria-labelledby="standings-heading">
+      <section
+        className="standings-content"
+        aria-labelledby="standings-heading"
+      >
         <h3 id="standings-heading" className="sr-only">
           Clasificación de equipos
         </h3>
         <StandingsTable standings={tableData} />
+        <p className="data-source-notice">
+          Información recuperada del{" "}
+          <a
+            href="https://www.ligamx.net/"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            sitio oficial de la Liga MX
+          </a>
+          .
+        </p>
       </section>
     </main>
   );

@@ -1,6 +1,3 @@
-import chromium from "@sparticuz/chromium";
-import puppeteer from "puppeteer-core";
-
 export default async function handler(req, res) {
   // Solo permitir peticiones GET
   if (req.method !== "GET") {
@@ -8,89 +5,102 @@ export default async function handler(req, res) {
   }
 
   try {
-    // Detectamos si estamos en local (Windows/Mac) para no usar el Chromium de Vercel
-    const isLocal =
-      !process.env.VERCEL_ENV && process.env.NODE_ENV !== "production";
+    const url = "https://www.ligamx.net/cancha/partidosClub/18/pumas";
 
-    if (isLocal) {
-      console.log(
-        "Modo desarrollo detectado. Saltando puppeteer para usar fallback local.",
-      );
-      throw new Error("Desarrollo local (skipping Chromium)");
+    // Hacemos el fetch directo al HTML sin usar Puppeteer
+    const response = await fetch(url, {
+      headers: {
+        "User-Agent":
+          "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+      },
+    });
+
+    if (!response.ok) {
+      throw new Error(`Error en la petición: ${response.status}`);
     }
 
-    // Configurar el navegador headless para Vercel
-    const browser = await puppeteer.launch({
-      args: chromium.args,
-      defaultViewport: chromium.defaultViewport,
-      executablePath: await chromium.executablePath(),
-      headless: chromium.headless,
-      ignoreHTTPSErrors: true,
-    });
+    const html = await response.text();
 
-    const page = await browser.newPage();
+    // Buscar el contenedor de los partidos
+    const tbodyMatch = html.match(
+      /<tbody id="bodyPartido">([\s\S]*?)<\/tbody>/,
+    );
+    if (!tbodyMatch) {
+      throw new Error("No se pudo encontrar la tabla de partidos en el HTML.");
+    }
 
-    // Interceptar y abortar peticiones de imágenes/fuentes para mayor velocidad
-    await page.setRequestInterception(true);
-    page.on("request", (request) => {
-      if (["image", "stylesheet", "font"].includes(request.resourceType())) {
-        request.abort();
-      } else {
-        request.continue();
+    // Limpiar comentarios HTML que a veces contienen partidos no jugados o duplicados
+    const cleanHtml = tbodyMatch[1].replace(/<!--[\s\S]*?-->/g, "");
+    const rows = cleanHtml.split("<tr");
+
+    const matches = [];
+
+    rows.forEach((row) => {
+      if (!row.includes("</tr>")) return;
+
+      const tdRegex = /<td[^>]*>([\s\S]*?)<\/td>/g;
+      const tds = [];
+      let match;
+      while ((match = tdRegex.exec(row)) !== null) {
+        tds.push(match[1].trim());
       }
-    });
 
-    // Navegar a la página de Liga MX
-    await page.goto("https://www.ligamx.net/cancha/partidosClub/18/pumas", {
-      waitUntil: "networkidle2", // Esperar a que carguen los datos dinámicos
-      timeout: 5000,
-    });
+      // Esperamos al menos las columnas: Datos, Local, Vs, Visita, Estadio
+      if (tds.length >= 5) {
+        const datosStr = tds[0];
+        const localStr = tds[1];
+        const vsStr = tds[2];
+        const visitaStr = tds[3];
 
-    // Extraer los datos del DOM
-    const matches = await page.evaluate(() => {
-      const results = [];
-      // Seleccionamos todos los contenedores de los partidos
-      const matchElements = document.querySelectorAll("div.partido");
+        // Extraer jornada, fecha y hora
+        const jornadaMatch = datosStr.match(/<span>(Jornada \d+)<\/span>/);
+        const fechaMatch = datosStr.match(/<strong>([^<]+)<\/strong>/);
+        // La hora a veces tiene el formato " - 12:00 hrs." o "12:00 hrs."
+        const horaMatch = datosStr.match(/([0-9]{2}:[0-9]{2} hrs\.)/);
 
-      matchElements.forEach((el) => {
-        const jornada =
-          el.querySelector(".datos .jornada")?.textContent?.trim() || "N/A";
-        const fecha =
-          el.querySelector(".datos .fecha")?.textContent?.trim() || "N/A";
-        const hora =
-          el.querySelector(".datos .hora")?.textContent?.trim() || "N/A";
-        const local =
-          el.querySelector(".local a.loadershow")?.textContent?.trim() || "N/A";
-        const visita =
-          el.querySelector(".visita a.loadershow")?.textContent?.trim() ||
-          "N/A";
+        const jornada = jornadaMatch ? jornadaMatch[1] : "N/A";
+        const fecha = fechaMatch ? fechaMatch[1] : "N/A";
+        const hora = horaMatch ? horaMatch[1] : "N/A";
 
-        // El marcador a veces es la fecha si no se ha jugado, o el resultado ej. "1 - 1"
-        const marcador =
-          el
-            .querySelector(".marcador a.loadershow, .marcador .loadershow")
-            ?.textContent?.trim() || "Próximo";
+        // Extraer nombres de los equipos desde el atributo title o de img alt
+        const localMatch = localStr.match(/title="([^"]+)"/);
+        const local = localMatch ? localMatch[1] : "N/A";
 
-        results.push({
+        const visitaMatch = visitaStr.match(/title="([^"]+)"/);
+        const visita = visitaMatch ? visitaMatch[1] : "N/A";
+
+        // Extraer marcador limpiando las etiquetas HTML dentro del <a>
+        // Ej: <a ...>1<span> - </span>1</a> => "1 - 1"
+        let marcador = vsStr.replace(/<[^>]+>/g, "").trim();
+
+        // Si no se ha jugado, a veces dice "VS" o "- - -"
+        if (
+          marcador.toLowerCase() === "vs" ||
+          marcador === "- - -" ||
+          marcador === ""
+        ) {
+          marcador = "Próximo";
+        }
+
+        const condicion =
+          local.toLowerCase().includes("universidad nacional") ||
+          local.toLowerCase().includes("pumas")
+            ? "Local"
+            : "Visitante";
+
+        matches.push({
           jornada,
           fecha,
           hora,
           local,
           visita,
           marcador,
-          condicion: local.toLowerCase().includes("pumas")
-            ? "Local"
-            : "Visitante",
+          condicion,
         });
-      });
-
-      return results;
+      }
     });
 
-    await browser.close();
-
     // Cachear el resultado por 1 día (86400 segundos) en Vercel
-    // y servir datos obsoletos mientras se revalida por 12 horas adicionales
     res.setHeader(
       "Cache-Control",
       "s-maxage=86400, stale-while-revalidate=43200",
@@ -98,15 +108,39 @@ export default async function handler(req, res) {
 
     return res.status(200).json({
       success: true,
-      source: "Liga MX (Web Scraped)",
+      source: "Liga MX (Direct HTML parsed)",
       data: matches,
     });
   } catch (error) {
-    console.error("Error durante el web scraping:", error);
+    console.error("Error procesando partidos:", error);
     return res.status(500).json({
       success: false,
-      error: "Hubo un error al escrapear la página. Revisa los logs de Vercel.",
+      error: "Hubo un error al procesar los partidos.",
       details: error.message,
     });
   }
+}
+
+// Código para poder ejecutar y probar este archivo directamente con `node api/ligamx.js`
+if (
+  typeof process !== "undefined" &&
+  process.argv &&
+  process.argv[1] &&
+  process.argv[1].endsWith("ligamx.js")
+) {
+  console.log("Ejecutando script de partidos localmente sin Puppeteer...");
+  const mockReq = { method: "GET" };
+  const mockRes = {
+    status: (code) => ({
+      json: (data) => {
+        console.log(`\n=== RESPUESTA (Status: ${code}) ===`);
+        console.log(JSON.stringify(data, null, 2));
+      },
+    }),
+    setHeader: (name, value) => {
+      console.log(`[Header] ${name}: ${value}`);
+    },
+  };
+
+  handler(mockReq, mockRes).then(() => process.exit(0));
 }

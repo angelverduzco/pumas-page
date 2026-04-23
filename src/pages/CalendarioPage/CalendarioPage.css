@@ -1,31 +1,64 @@
-.calendario-page {
-  padding: 4rem 2rem;
+.calendario-container {
+  background-color: #fafafa;
+  min-height: calc(100vh - 150px);
+  display: flex;
+  flex-direction: column;
+}
+
+.calendario-hero {
+  position: relative;
+  background-image: url("../../assets/estadio.webp");
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  color: #fff;
+  padding: 8rem 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 3rem;
+}
+
+.calendario-hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to bottom, rgba(4, 30, 66, 0.85) 0%, rgba(0, 0, 0, 0.7) 100%);
+  z-index: 1;
+}
+
+.calendario-hero h2, .calendario-hero p {
+  position: relative;
+  z-index: 2;
+}
+
+.calendario-hero h2 {
+  font-size: 3.5rem;
+  font-weight: 900;
+  text-transform: uppercase;
+  margin: 0 0 1rem 0;
+  color: #bba45a;
+  text-shadow: 0 4px 10px rgba(0,0,0,0.5);
+  letter-spacing: 2px;
+  text-align: center;
+}
+
+.calendario-hero p {
+  font-size: 1.3rem;
+  font-weight: 300;
+  color: #f0f0f0;
+  text-align: center;
+}
+
+.calendario-content {
+  padding: 2rem;
   max-width: 1200px;
   margin: 0 auto;
-  min-height: 70vh;
+  width: 100%;
 }
 
-.calendario-page h1 {
-  font-size: 2.5rem;
-  color: var(--primary-color);
-  text-align: center;
-  margin-bottom: 0.5rem;
-  text-transform: uppercase;
-}
 
-.calendario-page .page-description {
-  text-align: center;
-  color: var(--text-color);
-  margin-bottom: 3rem;
-  font-size: 1.1rem;
-}
-
-.status-message {
-  text-align: center;
-  padding: 3rem;
-  font-size: 1.2rem;
-  font-weight: 500;
-}
 
 .status-message.error {
   color: var(--error-color, #dc3545);
@@ -37,7 +70,7 @@
   gap: 2rem;
 }
 
-.calendario-page .match-card {
+.calendario-container .match-card {
   background: #122245;
   background: linear-gradient(120deg, rgba(18, 34, 69, 1) 20%, rgba(187, 164, 90, 1) 100%);
   color: #ffffff;
@@ -51,14 +84,14 @@
   border: none;
 }
 
-.calendario-page .match-card:hover,
-.calendario-page .match-card:focus {
+.calendario-container .match-card:hover,
+.calendario-container .match-card:focus {
   transform: translateY(-5px) scale(1.02);
   box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
   outline: 2px solid #bba45a;
 }
 
-.calendario-page .match-header {
+.calendario-container .match-header {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -66,13 +99,13 @@
   padding-bottom: 0.5rem;
 }
 
-.calendario-page .jornada {
+.calendario-container .jornada {
   font-weight: 700;
   color: #bba45a;
   font-size: 1.1rem;
 }
 
-.calendario-page .status-badge {
+.calendario-container .status-badge {
   font-size: 0.8rem;
   padding: 0.3rem 0.6rem;
   border-radius: 20px;
@@ -80,25 +113,25 @@
   text-transform: uppercase;
 }
 
-.calendario-page .past-badge {
+.calendario-container .past-badge {
   background-color: rgba(255, 255, 255, 0.1);
   color: #ffffff;
   border: 1px solid rgba(255, 255, 255, 0.3);
 }
 
-.calendario-page .future-badge {
+.calendario-container .future-badge {
   background-color: #bba45a;
   color: #122245;
 }
 
-.calendario-page .match-date {
+.calendario-container .match-date {
   text-align: center;
   color: #e0e0e0;
   font-size: 0.95rem;
   font-weight: 500;
 }
 
-.calendario-page .match-details {
+.calendario-container .match-details {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -108,7 +141,7 @@
   border-radius: 8px;
 }
 
-.calendario-page .team {
+.calendario-container .team {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -116,26 +149,26 @@
   flex: 1;
 }
 
-.calendario-page .team-name {
+.calendario-container .team-name {
   font-weight: 700;
   font-size: 1.1rem;
   text-align: center;
   color: #ffffff;
 }
 
-.calendario-page .score {
+.calendario-container .score {
   font-size: 1.5rem;
   font-weight: 800;
   color: #bba45a;
 }
 
-.calendario-page .versus {
+.calendario-container .versus {
   font-weight: 700;
   color: #bba45a;
   margin: 0 0.5rem;
 }
 
-.calendario-page .match-footer {
+.calendario-container .match-footer {
   text-align: center;
   font-size: 0.85rem;
   color: #e0e0e0;
@@ -144,8 +177,37 @@
   border-top: 1px dashed rgba(255, 255, 255, 0.2);
 }
 
+@media (max-width: 768px) {
+  .calendario-content {
+    padding: 1rem;
+  }
+  .calendario-hero h2 {
+    font-size: 2rem;
+  }
+  .calendario-hero p {
+    font-size: 1.1rem;
+  }
+}
+
+.data-source-notice {
+  margin-top: 2rem;
+  font-size: 0.9rem;
+  color: #666;
+  text-align: right;
+}
+
+.data-source-notice a {
+  color: #041e42;
+  text-decoration: underline;
+  font-weight: 500;
+}
+
+.data-source-notice a:hover {
+  color: #bba45a;
+}
+
 @media (prefers-reduced-motion: reduce) {
-  .calendario-page .match-card {
+  .calendario-container .match-card {
     transition: none;
   }
 }

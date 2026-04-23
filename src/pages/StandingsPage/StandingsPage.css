@@ -6,28 +6,13 @@
   flex-direction: column;
 }
 
-.loading-state, .error-state {
+.error-state {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   flex-grow: 1;
-  color: #041e42;
-}
-
-.loading-state h2 {
-  font-size: 2rem;
-  animation: pulse-load 1.5s infinite ease-in-out;
-}
-
-.error-state {
   color: #d9534f;
-}
-
-@keyframes pulse-load {
-  0% { opacity: 0.5; transform: scale(0.98); }
-  50% { opacity: 1; transform: scale(1.02); }
-  100% { opacity: 0.5; transform: scale(0.98); }
 }
 
 .standings-hero {
@@ -92,9 +77,33 @@
   border: 0;
 }
 
+.standings-content {
+  max-width: 1200px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 2rem 1rem;
+}
+
+.data-source-notice {
+  margin-top: 1.5rem;
+  font-size: 0.9rem;
+  color: #666;
+  text-align: right;
+}
+
+.data-source-notice a {
+  color: #041e42;
+  text-decoration: underline;
+  font-weight: 500;
+}
+
+.data-source-notice a:hover {
+  color: #bba45a;
+}
+
 @media (width <= 768px) {
   .standings-container {
-    padding: 1rem;
+    padding: 0;
   }
   .standings-hero h2 {
     font-size: 1.8rem;

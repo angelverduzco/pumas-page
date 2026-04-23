@@ -79,14 +79,7 @@ export default function StandingsTable({ standings }) {
                 </td>
                 <td className="col-team">
                   <div className="team-info">
-                    <img
-                      src={row.strBadge}
-                      alt={`Escudo Oficial del equipo ${row.strTeam}`}
-                      loading="lazy"
-                      width="35"
-                      height="35"
-                    />
-                    <span>{row.strTeam}</span>
+                    <span className="team-name">{row.strTeam}</span>
                   </div>
                 </td>
                 <td className="col-points">

@@ -1,5 +1,5 @@
 .latest-results {
-  max-width: 1000px;
+  max-width: 1200px;
   margin: 5rem auto;
   padding: 1rem;
 }
@@ -76,7 +76,7 @@
   flex: 1;
 }
 
-.team-name {
+.latest-results .team-name {
   font-weight: 700;
   color: #ffffff;
   text-align: center;

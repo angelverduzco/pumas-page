@@ -90,9 +90,8 @@
   color: #111;
 }
 
-.team-info img {
-  border-radius: 50%;
-  object-fit: contain;
+.team-name {
+  color: #111;
 }
 
 .col-points {

@@ -1,5 +1,6 @@
 import "./LatestResults.css";
 import { useCalendario } from "../../hooks/useCalendario";
+import LoadingState from "../../components/LoadingState";
 
 const LatestResults = () => {
   const { matches, loading, error } = useCalendario();
@@ -22,7 +23,7 @@ const LatestResults = () => {
         <h2 id="results-title" className="results-title">
           Últimos Resultados
         </h2>
-        <div className="results-container loading">Cargando resultados...</div>
+        <LoadingState message="Cargando resultados..." />
       </section>
     );
   }
